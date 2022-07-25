@@ -1,0 +1,34 @@
+<h2>Movies</h2>
+
+<div>
+  <label for="new-movie">Movie name: </label>
+  <input id="new-movie" #movieName />
+  <label for="new-movie">Movie title: </label>
+  <input id="new-movie" #movieTitle />
+  <label for="new-movie">Movie description: </label>
+  <input id="new-movie" #movieDescription />
+  <label for="new-movie">Movie rating: </label>
+  <input id="new-movie" #movieRating />
+  <label for="new-movie">Movie language: </label>
+  <input id="new-movie" #movieLanguage />
+  <label for="new-movie">Movie genre: </label>
+  <input id="new-movie" #movieGenre />
+  <label for="new-movie">Prime required: </label>
+  <input type="checkbox" id="new-movie" #moviePrime/>
+
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button type="button" class="add-button" (click)="add(movieName.value, movieTitle.value, movieDescription.value, movieRating.valueAsNumber, movieLanguage.value, movieGenre.value, moviePrime.checked);
+  movieName.value=''; movieTitle.value=''; movieDescription.value=''; movieRating.value=''; movieLanguage.value=''; movieGenre.value='';">
+    Add movie
+  </button>
+</div>
+
+<ul class="movies">
+  <li *ngFor="let movie of movies">
+    <a routerLink="/watch/{{movie.id}}">
+      <span class="badge">{{movie.id}}</span> {{movie.name}}
+    </a>
+    <button type="button" class="delete" title="delete movie"
+      (click)="delete(movie)">x</button>
+  </li>
+</ul>

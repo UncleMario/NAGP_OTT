@@ -1,0 +1,26 @@
+<div *ngIf="movie">
+  <h2>{{movie.name}}</h2>
+  <div>
+    <div>
+      <button type="button" (click)="watchMovie()" *ngIf="userName != '' && !movieUser.watched && hasPrime()">Watch</button>
+    </div>
+    <div>
+      <button type="button" *ngIf="movieUser.watched">Watched</button>
+    </div>
+    <div>
+      <button type="button" (click)="watchLater()" *ngIf="userName != '' && !movieUser.watched">Watch later</button>
+    </div>
+    <div>
+      <button type="button" (click)="favoriteMovie()" *ngIf="userName != '' && !movieUser.favorite">Favorite</button>
+    </div>
+    <div>
+      <button type="button" *ngIf="movieUser.favorite">Favorited</button>
+    </div>
+    <div>
+      <label for="movie-review" *ngIf="movieUser.watched">Review movie:</label><br />
+      <textarea id="movie-review" [(ngModel)]="review" rows="10" cols="35" *ngIf="movieUser.watched"></textarea>
+    </div>
+  </div>
+  <button type="button" (click)="goBack()">go back</button>
+  <button type="button" (click)="save()" *ngIf="userName != ''">save</button>
+</div>

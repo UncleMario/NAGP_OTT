@@ -1,0 +1,9 @@
+<h2>Login</h2>
+<div>
+  <p><label for="userLogin">Username: </label>
+  <input id="userLogin" #userName /></p>
+  <p><label for="userLogin">Password: </label>
+  <input id="userLogin" #password /></p>
+  <p><button type="button" (click)="login(userName.value, password.value)"  *ngIf="!authService.userIsLoggedIn || !authService.adminIsLoggedIn">Login</button>
+  <button type="button" (click)="logout()" *ngIf="authService.userIsLoggedIn || authService.adminIsLoggedIn">Logout</button></p>
+</div>
