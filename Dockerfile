@@ -9,9 +9,9 @@ RUN npm ci
 
 # Copy the rest of the files into the container and build
 COPY . .
-RUN npm run build –prod
+RUN npm run build --prod
 
 FROM nginx:alpine
-COPY –from=build /source/dist/todo /usr/share/nginx/html
-COPY –from=build /source/nginx.conf /etc/nginx/conf.d/
+COPY --from=build /source/dist/todo /usr/share/nginx/html
+COPY --from=build /source/nginx.conf /etc/nginx/conf.d/
 EXPOSE 8080
